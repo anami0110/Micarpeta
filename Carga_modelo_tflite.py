@@ -56,7 +56,7 @@ accuracies = []
 confmatrix = []
 pred = []
 true =[]
-test_data = np.load('DSfold9.npz')
+test_data = np.load('DSfold9_comprimido.npz')
 x_test = test_data["features"]
 y_test = test_data["labels"]
 
