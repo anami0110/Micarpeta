@@ -11,7 +11,8 @@ from sklearn.metrics import confusion_matrix
 from time import time 
 import itertools
 import matplotlib.pyplot as plt
-import tensorflow as tf
+import tflite_runtime.interpreter as tflite
+from tflite_runtime.interpreter import Interpreter
 
 # Definir matriz de confusion
 def plot_confusion_matrix(cm, target_names, title='Confusion matrix', cmap=None, normalize=True):
@@ -61,7 +62,7 @@ x_test = test_data["features"]
 y_test = test_data["labels"]
 
 # Cargar modelo
-interpreter = tf.lite.Interpreter(model_path="nq_fold9.tflite")
+interpreter = tflite.lite.Interpreter(model_path="nq_fold9.tflite")
 interpreter.allocate_tensors()
 
 # Test
