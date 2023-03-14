@@ -60,6 +60,9 @@ true =[]
 test_data = np.load('DSfold9_pequeño.npz')
 x_test = test_data["features"]
 y_test = test_data["labels"]
+if x_test.shape[0] != y_test.shape[0]:
+    raise ValueError("El número de ejemplos y etiquetas de prueba no coincide.")
+
 
 # Cargar modelo
 #interpreter = tflite.lite.Interpreter(model_path="nq_fold9.tflite")
@@ -84,6 +87,8 @@ for x, y in zip(x_test, y_test):
     interpreter.set_tensor(input_details[0]['index'], x)
     interpreter.invoke()
     avg_p = np.argmax(interpreter.get_tensor(output_details[0]['index']))
+    if x.ndim != 4 or x.shape != (1, 41, 79, 2):
+    raise ValueError("El formato de los datos de entrada no es el esperado.")
 
 stop = time()
 true.append(y_true)
