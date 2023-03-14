@@ -88,6 +88,13 @@ for x, y in zip(x_test, y_test):
 stop = time()
 true.append(y_true)
 pred.append(y_pred)
+if len(y_true) > 0 and len(y_pred) > 0:
+    accuracies.append(accuracy_score(y_true, y_pred))   
+    print("Accuracy:", accuracy_score(y_true, y_pred))
+    print("Confusion matrix:\n", confusion_matrix(y_true, y_pred))
+else:
+    print("No se han predicho etiquetas para algunos datos de prueba.")
+
 accuracies.append(accuracy_score(y_true, y_pred))   
 print("Accuracy:", accuracy_score(y_true, y_pred))
 print("Confusion matrix:\n", confusion_matrix(y_true, y_pred))
