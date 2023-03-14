@@ -89,6 +89,14 @@ for x, y in zip(x_test, y_test):
     avg_p = np.argmax(interpreter.get_tensor(output_details[0]['index']))
     if x.ndim != 4 or x.shape != (1, 41, 79, 2):
         raise ValueError("El formato de los datos de entrada no es el esperado.")
+    y_true.append(y)
+    y_pred.append(avg_p)
+    accuracies.append(accuracy_score(y_true, y_pred))
+    print("Accuracy:", accuracy_score(y_true, y_pred))
+    print("Confusion matrix:\n", confusion_matrix(y_true, y_pred))
+    true.append(y_true)
+    pred.append(y_pred)
+
 
 print("Tamaño de y_true:", len(y_true))
 print("Contenido de y_true:", y_true)
@@ -98,8 +106,7 @@ print("Tamaño de accuracies:", len(accuracies))
 print("Contenido de accuracies:", accuracies)
 
 stop = time()
-true.append(y_true)
-pred.append(y_pred)
+
 if len(y_true) > 0 and len(y_pred) > 0:
     accuracies.append(accuracy_score(y_true, y_pred))   
     print("Accuracy:", accuracy_score(y_true, y_pred))
