@@ -90,6 +90,13 @@ for x, y in zip(x_test, y_test):
     if x.ndim != 4 or x.shape != (1, 41, 79, 2):
         raise ValueError("El formato de los datos de entrada no es el esperado.")
 
+print("Tamaño de y_true:", len(y_true))
+print("Contenido de y_true:", y_true)
+print("Tamaño de y_pred:", len(y_pred))
+print("Contenido de y_pred:", y_pred)
+print("Tamaño de accuracies:", len(accuracies))
+print("Contenido de accuracies:", accuracies)
+
 stop = time()
 true.append(y_true)
 pred.append(y_pred)
