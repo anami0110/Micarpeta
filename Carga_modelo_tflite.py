@@ -80,6 +80,7 @@ for x, y in zip(x_test, y_test):
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
 
+    x = x.astype(np.float32)
     interpreter.set_tensor(input_details[0]['index'], x)
     interpreter.invoke()
     avg_p = np.argmax(interpreter.get_tensor(output_details[0]['index']))
