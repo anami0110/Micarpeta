@@ -88,7 +88,7 @@ for x, y in zip(x_test, y_test):
     interpreter.invoke()
     avg_p = np.argmax(interpreter.get_tensor(output_details[0]['index']))
     if x.ndim != 4 or x.shape != (1, 41, 79, 2):
-    raise ValueError("El formato de los datos de entrada no es el esperado.")
+        raise ValueError("El formato de los datos de entrada no es el esperado.")
 
 stop = time()
 true.append(y_true)
