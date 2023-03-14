@@ -62,7 +62,8 @@ x_test = test_data["features"]
 y_test = test_data["labels"]
 
 # Cargar modelo
-interpreter = tflite.lite.Interpreter(model_path="nq_fold9.tflite")
+#interpreter = tflite.lite.Interpreter(model_path="nq_fold9.tflite")
+interpreter = tflite_runtime.interpreter.Interpreter(model_path="nq_fold9.tflite")
 interpreter.allocate_tensors()
 
 # Test
